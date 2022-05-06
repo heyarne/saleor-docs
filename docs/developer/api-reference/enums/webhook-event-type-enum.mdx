@@ -9,6 +9,9 @@ Enum determining type of webhook.
 ```graphql
 enum WebhookEventTypeEnum {
   ANY_EVENTS
+  APP_CREATED
+  APP_UPDATED
+  APP_DELETED
   CATEGORY_CREATED
   CATEGORY_UPDATED
   CATEGORY_DELETED
@@ -92,6 +95,21 @@ enum WebhookEventTypeEnum {
 #### `ANY_EVENTS`
 
 All the events.
+
+
+#### `APP_CREATED`
+
+A new app is created.
+
+
+#### `APP_UPDATED`
+
+A app is updated.
+
+
+#### `APP_DELETED`
+
+A app is deleted.
 
 
 #### `CATEGORY_CREATED`
