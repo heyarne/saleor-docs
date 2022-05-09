@@ -1,12 +1,16 @@
 ---
-id: menu-item
-title: MenuItem
+id: transaction-item
+title: TransactionItem
 ---
 
-Represents a single item of the related menu. Can store categories, collection or pages.
+Represents a payment transaction.
+
+Added in Saleor 3.4.
+
+Note: this API is currently in Feature Preview and can be subject to changes at later point.
 
 ```graphql
-type MenuItem implements Node, ObjectWithMetadata {
+type TransactionItem implements Node, ObjectWithMetadata {
   id: ID!
   privateMetadata: [MetadataItem!]!
   privateMetafield(key: String!): String
@@ -14,22 +18,25 @@ type MenuItem implements Node, ObjectWithMetadata {
   metadata: [MetadataItem!]!
   metafield(key: String!): String
   metafields(keys: [String!]): Metadata
-  name: String!
-  menu: Menu!
-  parent: MenuItem
-  category: Category
-  collection: Collection
-  page: Page
-  level: Int!
-  children: [MenuItem!]
-  url: String
-  translation(languageCode: LanguageCodeEnum!): MenuItemTranslation
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+  actions: [TransactionActionEnum!]!
+  authorizedAmount: Money!
+  refundedAmount: Money!
+  voidedAmount: Money!
+  capturedAmount: Money!
+  status: String!
+  type: String!
+  reference: String!
+  events: [TransactionEvent!]!
 }
 ```
 
 ### Fields
 
 #### `id` ([`ID`](../../../developer/api-reference/scalars/id))
+
+The ID of the object.
 
 #### `privateMetadata` ([`MetadataItem`](../../../developer/api-reference/objects/metadata-item))
 
@@ -83,37 +90,45 @@ Note: this API is currently in Feature Preview and can be subject to changes at 
 
 - ##### `keys` ([`String`](../../../developer/api-reference/scalars/string))
 
-#### `name` ([`String`](../../../developer/api-reference/scalars/string))
+#### `createdAt` ([`DateTime`](../../../developer/api-reference/scalars/date-time))
 
-#### `menu` ([`Menu`](../../../developer/api-reference/objects/menu))
+#### `modifiedAt` ([`DateTime`](../../../developer/api-reference/scalars/date-time))
 
-#### `parent` ([`MenuItem`](../../../developer/api-reference/objects/menu-item))
+#### `actions` ([`TransactionActionEnum`](../../../developer/api-reference/enums/transaction-action-enum))
 
-#### `category` ([`Category`](../../../developer/api-reference/objects/category))
+List of actions that can be performed in the current state of a payment.
 
-#### `collection` ([`Collection`](../../../developer/api-reference/objects/collection))
+#### `authorizedAmount` ([`Money`](../../../developer/api-reference/objects/money))
 
-A collection associated with this menu item. Requires one of the following permissions to include the unpublished items: MANAGE_ORDERS, MANAGE_DISCOUNTS, MANAGE_PRODUCTS.
+Total amount authorized for this payment.
 
-#### `page` ([`Page`](../../../developer/api-reference/objects/page))
+#### `refundedAmount` ([`Money`](../../../developer/api-reference/objects/money))
 
-A page associated with this menu item. Requires one of the following permissions to include unpublished items: MANAGE_PAGES.
+Total amount refunded for this payment.
 
-#### `level` ([`Int`](../../../developer/api-reference/scalars/int))
+#### `voidedAmount` ([`Money`](../../../developer/api-reference/objects/money))
 
-#### `children` ([`MenuItem`](../../../developer/api-reference/objects/menu-item))
+Total amount voided for this payment.
 
-#### `url` ([`String`](../../../developer/api-reference/scalars/string))
+#### `capturedAmount` ([`Money`](../../../developer/api-reference/objects/money))
 
-URL to the menu item.
+Total amount captured for this payment.
 
-#### `translation` ([`MenuItemTranslation`](../../../developer/api-reference/objects/menu-item-translation))
+#### `status` ([`String`](../../../developer/api-reference/scalars/string))
 
-Returns translated menu item fields for the given language code.
+Status of transaction.
 
-- ##### `languageCode` ([`LanguageCodeEnum`](../../../developer/api-reference/enums/language-code-enum))
+#### `type` ([`String`](../../../developer/api-reference/scalars/string))
 
-A language code to return the translation for menu item.
+Type of transaction.
+
+#### `reference` ([`String`](../../../developer/api-reference/scalars/string))
+
+Reference of transaction.
+
+#### `events` ([`TransactionEvent`](../../../developer/api-reference/objects/transaction-event))
+
+List of all transaction's events.
 
 ### Interfaces
 

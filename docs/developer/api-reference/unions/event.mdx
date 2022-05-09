@@ -18,6 +18,12 @@ union Event =
   | GiftCardUpdated
   | GiftCardDeleted
   | GiftCardStatusChanged
+  | MenuCreated
+  | MenuUpdated
+  | MenuDeleted
+  | MenuItemCreated
+  | MenuItemUpdated
+  | MenuItemDeleted
   | OrderCreated
   | OrderUpdated
   | OrderConfirmed
@@ -59,8 +65,12 @@ union Event =
   | ShippingZoneCreated
   | ShippingZoneUpdated
   | ShippingZoneDeleted
+  | TransactionActionRequest
   | TranslationCreated
   | TranslationUpdated
+  | VoucherCreated
+  | VoucherUpdated
+  | VoucherDeleted
 ```
 
 ### Possible types
@@ -86,6 +96,18 @@ union Event =
 #### [`GiftCardDeleted`](../../../developer/api-reference/objects/gift-card-deleted)
 
 #### [`GiftCardStatusChanged`](../../../developer/api-reference/objects/gift-card-status-changed)
+
+#### [`MenuCreated`](../../../developer/api-reference/objects/menu-created)
+
+#### [`MenuUpdated`](../../../developer/api-reference/objects/menu-updated)
+
+#### [`MenuDeleted`](../../../developer/api-reference/objects/menu-deleted)
+
+#### [`MenuItemCreated`](../../../developer/api-reference/objects/menu-item-created)
+
+#### [`MenuItemUpdated`](../../../developer/api-reference/objects/menu-item-updated)
+
+#### [`MenuItemDeleted`](../../../developer/api-reference/objects/menu-item-deleted)
 
 #### [`OrderCreated`](../../../developer/api-reference/objects/order-created)
 
@@ -169,6 +191,14 @@ union Event =
 
 #### [`ShippingZoneDeleted`](../../../developer/api-reference/objects/shipping-zone-deleted)
 
+#### [`TransactionActionRequest`](../../../developer/api-reference/objects/transaction-action-request)
+
 #### [`TranslationCreated`](../../../developer/api-reference/objects/translation-created)
 
 #### [`TranslationUpdated`](../../../developer/api-reference/objects/translation-updated)
+
+#### [`VoucherCreated`](../../../developer/api-reference/objects/voucher-created)
+
+#### [`VoucherUpdated`](../../../developer/api-reference/objects/voucher-updated)
+
+#### [`VoucherDeleted`](../../../developer/api-reference/objects/voucher-deleted)
